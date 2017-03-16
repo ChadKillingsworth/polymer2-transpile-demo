@@ -30,5 +30,6 @@
     $jscomp.global.Object.defineProperties(MyElement, {is:{configurable:!0, enumerable:!0, get:function() {
       return "my-element";
     }}});
+    customElements.define(MyElement.is, MyElement);
   </script>
 </dom-module>
