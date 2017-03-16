@@ -1,0 +1,34 @@
+<link rel="import" href="polymer.es5.html" />
+<dom-module id="my-element">
+  <template>
+    <div><a href="https://google.com/">Class Element</a> <div>Class Element</div></div>
+  </template>
+  <script>
+    var $jscomp = {scope:{}, getGlobal:function(a) {
+      return "undefined" != typeof window && window === a ? a : "undefined" != typeof global && null != global ? global : a;
+    }};
+    $jscomp.global = $jscomp.getGlobal(this);
+    $jscomp.inherits = function(a, b) {
+      function d() {
+      }
+      d.prototype = b.prototype;
+      a.prototype = new d;
+      a.prototype.constructor = a;
+      for (var c in b) {
+        if (Object.defineProperties) {
+          var e = Object.getOwnPropertyDescriptor(b, c);
+          e && Object.defineProperty(a, c, e);
+        } else {
+          a[c] = b[c];
+        }
+      }
+    };
+    var MyElement = function(a) {
+      return Polymer.Element.apply(this, arguments) || this;
+    };
+    $jscomp.inherits(MyElement, Polymer.Element);
+    $jscomp.global.Object.defineProperties(MyElement, {is:{configurable:!0, enumerable:!0, get:function() {
+      return "my-element";
+    }}});
+  </script>
+</dom-module>
